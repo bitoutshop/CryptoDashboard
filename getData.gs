@@ -19,7 +19,8 @@ SpreadsheetApp.flush();
 
 //start dataSheet rebuild
 //Push Bitfinex wallet data into dataSheet a2
-var bitfinexWallet = getBitfinexData(bitfinexApiKey,bitfinexApiSecret , "v2/auth/r/wallets");  //Logger.log(bitfinexWallet) 19-07-24 14:54:57:394 AEST] [[funding, BTC, 5.2E-7, 0, null], [funding, USD, 23112.82365959, 0, null],
+var bitfinexWallet = getBitfinexData(bitfinexApiKey,bitfinexApiSecret , "v2/auth/r/wallets");  
+//Logger.log(bitfinexWallet) 19-07-24 14:54:57:394 AEST] [[funding, BTC, 5.2E-7, 0, null], [funding, USD, 23112.82365959, 0, null],
  for (var i = 0; i < bitfinexWallet.length; i++) 
                             {  
                               var start = i + 2              
@@ -31,7 +32,8 @@ var bitfinexWallet = getBitfinexData(bitfinexApiKey,bitfinexApiSecret , "v2/auth
   
   
 //Get bitfinexLedgerUSD Proffits array  
-var bitfinexLedgerUSD = getBitfinexData(bitfinexApiKey , bitfinexApiSecret , "v2/auth/r/ledgers/USD/hist" ); //Logger.log(bitfinexLedgerUSD) [19-07-24 11:20:49:268 AEST] [[2.42242503E9, USD, null, 1.563845401E12, null, 8.90254243, 23103.73002852, null, Margin Funding Payment on wallet funding], 
+var bitfinexLedgerUSD = getBitfinexData(bitfinexApiKey , bitfinexApiSecret , "v2/auth/r/ledgers/USD/hist" ); 
+//Logger.log(bitfinexLedgerUSD) [19-07-24 11:20:49:268 AEST] [[2.42242503E9, USD, null, 1.563845401E12, null, 8.90254243, 23103.73002852, null, Margin Funding Payment on wallet funding], 
  for (var i = 0; i < bitfinexLedgerUSD.length; i++) 
                             {  
                               var start = i + 2       

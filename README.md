@@ -4,7 +4,7 @@ Work in progress
 
 
 
-Create 2 sheets "configSheet and dataSheet"
+Create 2 sheets "configSheet" and "dataSheet"
 
 Place your API Keys in sheet = configSheet, 
 

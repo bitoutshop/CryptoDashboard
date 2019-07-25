@@ -18,7 +18,7 @@ SpreadsheetApp.flush();
 
 
 //start dataSheet rebuild
-//Push Bitfinex funds data into dataSheet a2
+//Push Bitfinex wallet data into dataSheet a2
 var bitfinexWallet = getBitfinexData(bitfinexApiKey,bitfinexApiSecret , "v2/auth/r/wallets");  //Logger.log(bitfinexWallet) 19-07-24 14:54:57:394 AEST] [[funding, BTC, 5.2E-7, 0, null], [funding, USD, 23112.82365959, 0, null],
  for (var i = 0; i < bitfinexWallet.length; i++) 
                             {  

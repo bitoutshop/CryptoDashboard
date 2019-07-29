@@ -51,14 +51,19 @@ dataSheet.getRange("q2").setValue('=importjson("https://api.bitfinex.com/v1/lend
 dataSheet.getRange("q12").setValue('=importjson("https://api.bitfinex.com/v1/lendbook/btc?limit_bids=1&limit_asks=6")');
 dataSheet.getRange("q23").setValue('=importjson("https://api.bitfinex.com/v1/lendbook/neo?limit_bids=1&limit_asks=6")');
   
-//Build Spot Prices
+//Build Spot Prices and History
 dataSheet.getRange("aa2").setValue('=importhtml("http://www.xe.com/currencycharts/?from=AUD&to=USD","table",1)');
 dataSheet.getRange("ad2").setValue('=importhtml("https://www.bitfinex.com/stats","table",1)'); 
 dataSheet.getRange("aq2").setValue('=importhtml("https://www.coingecko.com/en/coins/tether/historical_data/aud?end_date=9999-06-30&start_date=2016-07-01#panel", "table" , 1)');
+dataSheet.getRange("bj2").setValue('=importhtml("https://coinmarketcap.com/currencies/gas/","table",2)')  ;  
+  
+  
+  
+//Build Bitcoin and Neo wallet information  
 dataSheet.getRange("au2").setValue('=ImportJSON("https://api.neoscan.io/api/main_net/v1/get_balance/'+(neoKey)+'")');
 dataSheet.getRange("bg2").setValue('=importhtml("https://www.blockchain.com/btc/address/'+(btcKey)+'","table",2)');
 dataSheet.getRange("au30").setValue('=ImportJSON("https://api.neoscan.io/api/main_net/v1/get_unclaimed/'+(neoKey)+'")');
-dataSheet.getRange("bj2").setValue('=importhtml("https://coinmarketcap.com/currencies/gas/","table",2)')  ;
+
 
 }
 

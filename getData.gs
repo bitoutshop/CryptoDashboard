@@ -7,21 +7,21 @@ function getData() {
   const bitfinexApiKey = configSheet.getRange("B26").getValue(); 
   const bitfinexApiSecret = configSheet.getRange("B27").getValue();
   const quandlApiKey = configSheet.getRange("B37").getValue();
-
-  
+  const neoKey = configSheet.getRange("E3").getValue();
+  const btcKey = configSheet.getRange("E2").getValue();
   
 //clear entire dataSheet 
-var rangeAll = dataSheet.getRange("A2:ZZ1000")
-rangeAll.clearContent();  
+  var rangeAll = dataSheet.getRange("A2:ZZ1000")
+  rangeAll.clearContent();  
 SpreadsheetApp.flush();
 
 
 
 //start dataSheet rebuild
 //Push Bitfinex wallet data into dataSheet a2
-var bitfinexWallet = getBitfinexData(bitfinexApiKey,bitfinexApiSecret , "v2/auth/r/wallets");  
-//Logger.log(bitfinexWallet) 19-07-24 14:54:57:394 AEST] [[funding, BTC, 5.2E-7, 0, null], [funding, USD, 23112.82365959, 0, null],
- for (var i = 0; i < bitfinexWallet.length; i++) 
+  var bitfinexWallet = getBitfinexData(bitfinexApiKey,bitfinexApiSecret , "v2/auth/r/wallets");  
+  //Logger.log(bitfinexWallet) //19-07-24 14:54:57:394 AEST] [[funding, BTC, 5.2E-7, 0, null], [funding, USD, 23112.82365959, 0, null],
+for (var i = 0; i < bitfinexWallet.length; i++) 
                             {  
                               var start = i + 2              
                                        dataSheet.getRange("a" + start).setValue(bitfinexWallet[i][0]);  
@@ -32,9 +32,9 @@ var bitfinexWallet = getBitfinexData(bitfinexApiKey,bitfinexApiSecret , "v2/auth
   
   
 //Get bitfinexLedgerUSD Proffits array  
-var bitfinexLedgerUSD = getBitfinexData(bitfinexApiKey , bitfinexApiSecret , "v2/auth/r/ledgers/USD/hist" ); 
-//Logger.log(bitfinexLedgerUSD) [19-07-24 11:20:49:268 AEST] [[2.42242503E9, USD, null, 1.563845401E12, null, 8.90254243, 23103.73002852, null, Margin Funding Payment on wallet funding], 
- for (var i = 0; i < bitfinexLedgerUSD.length; i++) 
+  var bitfinexLedgerUSD = getBitfinexData(bitfinexApiKey , bitfinexApiSecret , "v2/auth/r/ledgers/USD/hist" ); 
+  //Logger.log(bitfinexLedgerUSD) //[19-07-24 11:20:49:268 AEST] [[2.42242503E9, USD, null, 1.563845401E12, null, 8.90254243, 23103.73002852, null, Margin Funding Payment on wallet funding], 
+for (var i = 0; i < bitfinexLedgerUSD.length; i++) 
                             {  
                               var start = i + 2       
                                        dataSheet.getRange("d" + start).setValue(bitfinexLedgerUSD[i][1]);
@@ -54,8 +54,12 @@ dataSheet.getRange("q23").setValue('=importjson("https://api.bitfinex.com/v1/len
 //Build Spot Prices
 dataSheet.getRange("aa2").setValue('=importhtml("http://www.xe.com/currencycharts/?from=AUD&to=USD","table",1)');
 dataSheet.getRange("ad2").setValue('=importhtml("https://www.bitfinex.com/stats","table",1)'); 
-  
-  
+dataSheet.getRange("aq2").setValue('=importhtml("https://www.coingecko.com/en/coins/tether/historical_data/aud?end_date=9999-06-30&start_date=2016-07-01#panel", "table" , 1)');
+dataSheet.getRange("au2").setValue('=ImportJSON("https://api.neoscan.io/api/main_net/v1/get_balance/'+(neoKey)+'")');
+dataSheet.getRange("bg2").setValue('=importhtml("https://www.blockchain.com/btc/address/'+(btcKey)+'","table",2)');
+dataSheet.getRange("au30").setValue('=ImportJSON("https://api.neoscan.io/api/main_net/v1/get_unclaimed/'+(neoKey)+'")');
+dataSheet.getRange("bj2").setValue('=importhtml("https://coinmarketcap.com/currencies/gas/","table",2)')  ;
+
 }
 
 

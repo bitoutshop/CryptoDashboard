@@ -3,16 +3,16 @@ function getData() {
   const dataSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("dataSheet");
   
   
-//I assume that key and secret API are in the "Config" spreadsheet.
+//I assume that key and secret API are in the "configSheet" spreadsheet.
   const bitfinexApiKey = configSheet.getRange("B26").getValue(); 
   const bitfinexApiSecret = configSheet.getRange("B27").getValue();
   const quandlApiKey = configSheet.getRange("B37").getValue();
   const neoKey = configSheet.getRange("E3").getValue();
   const btcKey = configSheet.getRange("E2").getValue();
   
-//clear entire dataSheet 
-  var rangeAll = dataSheet.getRange("A2:ZZ1000")
-  rangeAll.clearContent();  
+//clear entire dataSheet except header row
+var rangeAll = dataSheet.getRange("A2:ZZ1000")
+rangeAll.clearContent();  
 SpreadsheetApp.flush();
 
 
